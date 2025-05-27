@@ -38,7 +38,7 @@ export const App = () => {
     }
 
     const newTodo = {
-      id: Math.max(...todos.map(t => t.id)) + 1,
+      id: todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1,
       title,
       userId: Number(userId),
       completed: false,

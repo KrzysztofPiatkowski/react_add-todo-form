@@ -2,7 +2,7 @@ import { Todo, User } from '../../api/types';
 
 type Props = {
   todo: Todo;
-  user: User;
+  user?: User;
 };
 
 export const TodoInfo: React.FC<Props> = ({ todo, user }) => {
@@ -15,9 +15,13 @@ export const TodoInfo: React.FC<Props> = ({ todo, user }) => {
     >
       <h2 className="TodoInfo__title">{title}</h2>
 
-      <a className="UserInfo" href={`mailto:${user.email}`}>
-        {user.name}
-      </a>
+      {user ? (
+        <a className="UserInfo" href={`mailto:${user.email}`}>
+          {user.name}
+        </a>
+      ) : (
+        <span className="UserInfo">Unknown user</span>
+      )}
     </article>
   );
 };

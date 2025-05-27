@@ -13,10 +13,6 @@ export const TodoList: React.FC<Props> = ({ todos }) => {
       {todos.map(todo => {
         const user = usersFromServer.find(u => u.id === todo.userId);
 
-        if (!user) {
-          throw new Error(`User with ID ${todo.userId} not found`);
-        }
-
         return <TodoInfo key={todo.id} todo={todo} user={user} />;
       })}
     </div>
